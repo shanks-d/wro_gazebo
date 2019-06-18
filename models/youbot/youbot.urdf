@@ -273,6 +273,7 @@
       </geometry>
     </visual>
   </link>
+
   <link name="youbot__arm_link_5">
     <inertial>
       <mass value="0.251000"/>
@@ -292,6 +293,7 @@
       </geometry>
     </visual>
   </link>
+
   <link name="youbot__gripper_palm_link">
     <inertial>
       <mass value="0.100000"/>
@@ -491,4 +493,34 @@
       </geometry>
     </visual>
   </link>
+
+<transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="youbot__arm_joint_1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="youbot__arm_joint_2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/youbot</robotNamespace>
+<legacyModeNS>true</legacyModeNS>
+  </plugin>
+</gazebo>
+
 </robot>

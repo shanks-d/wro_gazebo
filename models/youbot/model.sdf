@@ -1431,7 +1431,8 @@
     <static>0</static>
 
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-  <robotNamespace>/rrbot</robotNamespace>
+  <robotNamespace>/youbot</robotNamespace>
+<legacyModeNS>true</legacyModeNS> 
   </plugin>
 
 

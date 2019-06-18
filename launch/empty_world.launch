@@ -44,6 +44,11 @@
     <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen" args="$(arg command_arg3)"/>
   </group>
 
-<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find wro_gazebo)/models/youbot/model.sdf -sdf -z 1 -model youbot" />
+ <param name="robot_description" textfile="$(find wro_gazebo)/models/youbot/youbot.urdf"/>
+<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model youbot -param robot_description"/>
+
+<!--<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find wro_gazebo)/models/youbot/model.sdf -sdf -z 1 -model youbot" />-->
 
 </launch>
+
+
