@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <robot name="youbot">
-  <joint name="youbot__base_footprint_joint" type="fixed">
+  <joint name="youbot__base_footprint_joint" type="revolute">
     <parent link="youbot__base_footprint"/>
     <child link="youbot__base_link"/>
     <origin rpy="0  0  0" xyz="0    0    0.09"/>
     <axis xyz="0  0  1"/>
     <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__arm_joint_0" type="fixed">
+  <joint name="youbot__arm_joint_0" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__arm_link_0"/>
     <origin rpy="0  0  0" xyz="0.14299  0       0.046"/>
@@ -19,37 +19,37 @@
     <child link="youbot__arm_link_1"/>
     <origin rpy="0       0       2.96706" xyz="0.024  0     0.096"/>
     <axis xyz="0  0 -1"/>
-    <limit effort="9.5" lower="0.0" upper="5.899213" velocity="0.0"/>
+    <limit effort="9.5" lower="0.0" upper="5.899213" velocity="1.0"/>
   </joint>
   <joint name="youbot__arm_joint_2" type="revolute">
     <parent link="youbot__arm_link_1"/>
     <child link="youbot__arm_link_2"/>
     <origin rpy="0      -1.13446  0" xyz="0.033  0     0.019"/>
     <axis xyz="0  1  0"/>
-    <limit effort="9.5" lower="0.0" upper="2.70526" velocity="-1.0"/>
+    <limit effort="9.5" lower="0.0" upper="2.70526" velocity="1.0"/>
   </joint>
   <joint name="youbot__arm_joint_3" type="revolute">
     <parent link="youbot__arm_link_2"/>
     <child link="youbot__arm_link_3"/>
     <origin rpy="3.14159  0.59341  3.14159" xyz="0     0     0.155"/>
     <axis xyz="0  1  0"/>
-    <limit effort="6.0" lower="-5.183628" upper="0.0" velocity="-1.0"/>
+    <limit effort="6.0" lower="-5.183628" upper="0.0" velocity="1.0"/>
   </joint>
   <joint name="youbot__arm_joint_4" type="revolute">
     <parent link="youbot__arm_link_3"/>
     <child link="youbot__arm_link_4"/>
     <origin rpy="-3.14159 -1.35262  3.14159" xyz="0     0     0.135"/>
     <axis xyz="0  1  0"/>
-    <limit effort="2.0" lower="0.0" upper="3.577925" velocity="-1.0"/>
+    <limit effort="2.0" lower="0.0" upper="3.577925" velocity="1.0"/>
   </joint>
   <joint name="youbot__arm_joint_5" type="revolute">
     <parent link="youbot__arm_link_4"/>
     <child link="youbot__arm_link_5"/>
     <origin rpy="0       0       2.92342" xyz="-0.002  0     0.13"/>
     <axis xyz="0  0 -1"/>
-    <limit effort="1.0" lower="0.0" upper="5.846853" velocity="-1.0"/>
+    <limit effort="1.0" lower="0.0" upper="5.846853" velocity="1.0"/>
   </joint>
-  <joint name="youbot__gripper_palm_joint" type="fixed">
+  <joint name="youbot__gripper_palm_joint" type="revolute">
     <parent link="youbot__arm_link_5"/>
     <child link="youbot__gripper_palm_link"/>
     <origin rpy="0  0  0" xyz="0  0  0"/>
@@ -68,72 +68,72 @@
     <child link="youbot__gripper_finger_link_r"/>
     <origin rpy="0  0  0" xyz="0.004   -0.008    0.04599"/>
     <axis xyz="0 -1  0"/>
-    <limit effort="1.0" lower="0.0" upper="0.0115" velocity="-1.0"/>
+    <limit effort="1.0" lower="0.0" upper="0.0115" velocity="1.0"/>
   </joint>
-  <joint name="youbot__base_laser_front_hokuyo_urg04_laser_joint" type="fixed">
+  <joint name="youbot__base_laser_front_hokuyo_urg04_laser_joint" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__base_laser_front_link"/>
     <origin rpy="0  0  0" xyz="0.3   0   -0.03"/>
     <axis xyz="0  0  1"/>
     <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__caster_joint_bl" type="fixed">
+  <joint name="youbot__caster_joint_bl" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_bl"/>
     <origin rpy="0  0  0" xyz="-0.228  0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__wheel_joint_bl" type="fixed">
+  <joint name="youbot__wheel_joint_bl" type="revolute">
     <parent link="youbot__caster_link_bl"/>
     <child link="youbot__wheel_link_bl"/>
     <origin rpy="0  0  0" xyz="0  0  0"/>
     <axis xyz="0  1  0"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__caster_joint_br" type="fixed">
+  <joint name="youbot__caster_joint_br" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_br"/>
     <origin rpy="0  0  0" xyz="-0.228 -0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__wheel_joint_br" type="fixed">
+  <joint name="youbot__wheel_joint_br" type="revolute">
     <parent link="youbot__caster_link_br"/>
     <child link="youbot__wheel_link_br"/>
     <origin rpy="0  0  0" xyz="0  0  0"/>
     <axis xyz="0  1  0"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__caster_joint_fl" type="fixed">
+  <joint name="youbot__caster_joint_fl" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_fl"/>
     <origin rpy="0  0  0" xyz="0.228  0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__wheel_joint_fl" type="fixed">
+  <joint name="youbot__wheel_joint_fl" type="revolute">
     <parent link="youbot__caster_link_fl"/>
     <child link="youbot__wheel_link_fl"/>
     <origin rpy="0  0  0" xyz="0  0  0"/>
     <axis xyz="0  1  0"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__caster_joint_fr" type="fixed">
+  <joint name="youbot__caster_joint_fr" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_fr"/>
     <origin rpy="0  0  0" xyz="0.228 -0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__wheel_joint_fr" type="fixed">
+  <joint name="youbot__wheel_joint_fr" type="revolute">
     <parent link="youbot__caster_link_fr"/>
     <child link="youbot__wheel_link_fr"/>
     <origin rpy="0  0  0" xyz="0  0  0"/>
     <axis xyz="0  1  0"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__plate_joint" type="fixed">
+  <joint name="youbot__plate_joint" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__plate_link"/>
     <origin rpy="0  0  0" xyz="-0.159  0     0.046"/>
@@ -494,9 +494,19 @@
     </visual>
   </link>
 
+<transmission name="tran0">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="youbot__arm_joint_0">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor0">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 <transmission name="tran1">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="youbot__arm_joint_2">
+    <joint name="youbot__arm_joint_1">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor1">
@@ -507,7 +517,7 @@
 
   <transmission name="tran2">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="youbot__arm_joint_3">
+    <joint name="youbot__arm_joint_2">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor2">
@@ -515,7 +525,38 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+<transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="youbot__arm_joint_3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="youbot__arm_joint_4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="youbot__arm_joint_5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
     <robotNamespace>/youbot</robotNamespace>
