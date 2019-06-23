@@ -77,61 +77,62 @@
     <axis xyz="0  0  1"/>
     <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
-  <joint name="youbot__caster_joint_bl" type="revolute">
+
+<!--  <joint name="youbot__caster_joint_bl" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_bl"/>
     <origin rpy="0  0  0" xyz="-0.228  0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
-  </joint>
-  <joint name="youbot__wheel_joint_bl" type="revolute">
-    <parent link="youbot__caster_link_bl"/>
+  </joint> -->
+  <joint name="youbot__wheel_joint_bl" type="continuous">
+    <parent link="youbot__base_link"/>
     <child link="youbot__wheel_link_bl"/>
-    <origin rpy="0  0  0" xyz="0  0  0"/>
+    <origin rpy="0  0  0" xyz="-0.228  0.158 -0.034"/>
     <axis xyz="0  1  0"/>
-    <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    <limit effort="10.0" velocity="250.0"/>
   </joint>
-  <joint name="youbot__caster_joint_br" type="revolute">
+  <!-- <joint name="youbot__caster_joint_br" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_br"/>
     <origin rpy="0  0  0" xyz="-0.228 -0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
-  </joint>
-  <joint name="youbot__wheel_joint_br" type="revolute">
-    <parent link="youbot__caster_link_br"/>
+  </joint> -->
+  <joint name="youbot__wheel_joint_br" type="continuous">
+    <parent link="youbot__base_link"/>
     <child link="youbot__wheel_link_br"/>
-    <origin rpy="0  0  0" xyz="0  0  0"/>
+    <origin rpy="0  0  0" xyz="-0.228 -0.158 -0.034"/>
     <axis xyz="0  1  0"/>
-    <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    <limit effort="10.0" velocity="250.0"/>
   </joint>
-  <joint name="youbot__caster_joint_fl" type="revolute">
+  <!-- <joint name="youbot__caster_joint_fl" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_fl"/>
     <origin rpy="0  0  0" xyz="0.228  0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
-  </joint>
-  <joint name="youbot__wheel_joint_fl" type="revolute">
-    <parent link="youbot__caster_link_fl"/>
+  </joint> -->
+  <joint name="youbot__wheel_joint_fl" type="continuous">
+    <parent link="youbot__base_link"/>
     <child link="youbot__wheel_link_fl"/>
-    <origin rpy="0  0  0" xyz="0  0  0"/>
+    <origin rpy="0  0  0" xyz="0.228  0.158 -0.034"/>
     <axis xyz="0  1  0"/>
-    <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    <limit effort="10.0" velocity="250.0"/>
   </joint>
-  <joint name="youbot__caster_joint_fr" type="revolute">
+  <!-- <joint name="youbot__caster_joint_fr" type="revolute">
     <parent link="youbot__base_link"/>
     <child link="youbot__caster_link_fr"/>
     <origin rpy="0  0  0" xyz="0.228 -0.158 -0.034"/>
     <axis xyz="0  0  1"/>
     <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
-  </joint>
-  <joint name="youbot__wheel_joint_fr" type="revolute">
-    <parent link="youbot__caster_link_fr"/>
+  </joint> -->
+  <joint name="youbot__wheel_joint_fr" type="continuous">
+    <parent link="youbot__base_link"/>
     <child link="youbot__wheel_link_fr"/>
-    <origin rpy="0  0  0" xyz="0  0  0"/>
+    <origin rpy="0  0  0" xyz="0.228 -0.158 -0.034"/>
     <axis xyz="0  1  0"/>
-    <limit effort="1.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    <limit effort="10.0" velocity="250.0"/>
   </joint>
   <joint name="youbot__plate_joint" type="revolute">
     <parent link="youbot__base_link"/>
@@ -370,13 +371,13 @@
       </geometry>
     </visual>
   </link>
-  <link name="youbot__caster_link_bl">
+  <!-- <link name="youbot__caster_link_bl">
     <inertial>
       <mass value="0.100000"/>
       <origin rpy="0  0  0" xyz="0  0  0"/>
       <inertia ixx="0.012412" ixy="-0.000712" ixz="0.000503" iyy="0.015218" iyz="-0.000004" izz="0.011764"/>
     </inertial>
-  </link>
+  </link> -->
   <link name="youbot__wheel_link_bl">
     <inertial>
       <mass value="0.400000"/>
@@ -396,13 +397,13 @@
       </geometry>
     </visual>
   </link>
-  <link name="youbot__caster_link_br">
+  <!-- <link name="youbot__caster_link_br">
     <inertial>
       <mass value="0.100000"/>
       <origin rpy="0  0  0" xyz="0  0  0"/>
       <inertia ixx="0.012412" ixy="-0.000712" ixz="0.000503" iyy="0.015218" iyz="-0.000004" izz="0.011764"/>
     </inertial>
-  </link>
+  </link> -->
   <link name="youbot__wheel_link_br">
     <inertial>
       <mass value="0.400000"/>
@@ -422,13 +423,13 @@
       </geometry>
     </visual>
   </link>
-  <link name="youbot__caster_link_fl">
+  <!-- <link name="youbot__caster_link_fl">
     <inertial>
       <mass value="0.100000"/>
       <origin rpy="0  0  0" xyz="0  0  0"/>
       <inertia ixx="0.012412" ixy="-0.000712" ixz="0.000503" iyy="0.015218" iyz="-0.000004" izz="0.011764"/>
     </inertial>
-  </link>
+  </link> -->
   <link name="youbot__wheel_link_fl">
     <inertial>
       <mass value="0.400000"/>
@@ -448,13 +449,13 @@
       </geometry>
     </visual>
   </link>
-  <link name="youbot__caster_link_fr">
+  <!-- <link name="youbot__caster_link_fr">
     <inertial>
       <mass value="0.100000"/>
       <origin rpy="0  0  0" xyz="0  0  0"/>
       <inertia ixx="0.012412" ixy="-0.000712" ixz="0.000503" iyy="0.015218" iyz="-0.000004" izz="0.011764"/>
     </inertial>
-  </link>
+  </link> -->
   <link name="youbot__wheel_link_fr">
     <inertial>
       <mass value="0.400000"/>
@@ -494,6 +495,7 @@
     </visual>
   </link>
 
+<!-- ------------------------------arm transmissions------------------------------ -->
 <transmission name="tran0">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="youbot__arm_joint_0">
@@ -513,9 +515,8 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
-
-  <transmission name="tran2">
+</transmission>
+<transmission name="tran2">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="youbot__arm_joint_2">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -534,9 +535,8 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
-
-  <transmission name="tran4">
+</transmission>
+<transmission name="tran4">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="youbot__arm_joint_4">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -545,8 +545,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
-
+</transmission>
 <transmission name="tran5">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="youbot__arm_joint_5">
@@ -556,11 +555,30 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
+</transmission>
+
+<!-- ----------------------------Control Plugins------------------------------ -->
+<gazebo>
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+    <updateRate>100.0</updateRate>
+    <robotNamespace>/youbot</robotNamespace>
+    <leftFrontJoint>youbot__wheel_joint_fl</leftFrontJoint>
+    <rightFrontJoint>youbot__wheel_joint_fr</rightFrontJoint>
+    <leftRearJoint>youbot__wheel_joint_bl</leftRearJoint>
+    <rightRearJoint>youbot__wheel_joint_br</rightRearJoint>
+    <wheelSeparation>0.316</wheelSeparation>
+    <wheelDiameter>0.1</wheelDiameter>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <torque>20</torque>
+    <topicName>cmd_vel</topicName>
+    <broadcastTF>false</broadcastTF>
+  </plugin>
+</gazebo>
+
 <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
     <robotNamespace>/youbot</robotNamespace>
-<legacyModeNS>true</legacyModeNS>
+    <legacyModeNS>true</legacyModeNS>
   </plugin>
 </gazebo>
 

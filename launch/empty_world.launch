@@ -45,6 +45,8 @@
   </group>
 
  <param name="robot_description" textfile="$(find wro_gazebo)/models/youbot/youbot.urdf"/>
+ <rosparam file="$(find wro_control)/config/gazebo_ros_control.yaml" command="load"/>
+
 <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model youbot -param robot_description"/>
 
 <!--<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find wro_gazebo)/models/youbot/model.sdf -sdf -z 1 -model youbot" />-->
