@@ -18,6 +18,13 @@
   <arg name="use_clock_frequency" default="false"/>
   <arg name="pub_clock_frequency" default="100"/>
 
+  <!-- Robot Position -->
+  <arg name="x" default="2"/>
+  <arg name="y" default="2"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="1.579"/>
 
   <!-- set use_sim_time flag -->
   <param name="/use_sim_time" value="$(arg use_sim_time)"/>
@@ -44,13 +51,12 @@
     <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen" args="$(arg command_arg3)"/>
   </group>
 
- <param name="robot_description" textfile="$(find wro_gazebo)/models/youbot/youbot.urdf"/>
  <rosparam file="$(find wro_control)/config/gazebo_ros_control.yaml" command="load"/>
 
-<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model youbot -param robot_description"/>
+<param name="robot_description" textfile="$(find wro_gazebo)/models/youbot/youbot.urdf"/>
+<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model youbot -param robot_description -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
 <!--<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find wro_gazebo)/models/youbot/model.sdf -sdf -z 1 -model youbot" />-->
 
 </launch>
-
-

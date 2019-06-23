@@ -1,3 +1,8 @@
+<!-- Notes -->
+<!-- This is a modification of the actual 'KUKA YOUBOT' and does not simulate mechanum wheels -->
+<!-- The robot URDF is modified by eliminating links and joints used to simulate mechanum wheels -->
+<!-- The Hokuyo laserscanner mounted on the robot is replaced by a Kinect Camera -->
+<!-- The robot manipulator is controlled using effort_controllers/JointPositionController -->
 <?xml version="1.0" ?>
 <robot name="youbot">
   <joint name="youbot__base_footprint_joint" type="revolute">
@@ -72,8 +77,8 @@
   </joint>
   <joint name="youbot__base_laser_front_hokuyo_urg04_laser_joint" type="revolute">
     <parent link="youbot__base_link"/>
-    <child link="youbot__base_laser_front_link"/>
-    <origin rpy="0  0  0" xyz="0.3   0   -0.03"/>
+    <child link="kinect__link"/>
+    <origin rpy="0  0  0" xyz="0.33   0   0.03"/>
     <axis xyz="0  0  1"/>
     <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
   </joint>
@@ -274,7 +279,6 @@
       </geometry>
     </visual>
   </link>
-
   <link name="youbot__arm_link_5">
     <inertial>
       <mass value="0.251000"/>
@@ -294,7 +298,6 @@
       </geometry>
     </visual>
   </link>
-
   <link name="youbot__gripper_palm_link">
     <inertial>
       <mass value="0.100000"/>
@@ -352,7 +355,7 @@
       </geometry>
     </visual>
   </link>
-  <link name="youbot__base_laser_front_link">
+  <!-- <link name="youbot__base_laser_front_link">
     <inertial>
       <mass value="0.160000"/>
       <origin rpy="0  0  0" xyz="0  0  0"/>
@@ -370,7 +373,7 @@
         <mesh filename="package://wro_gazebo/models/hokuyo/meshes/hokuyo.dae" scale="1.0 1.0 1.0"/>
       </geometry>
     </visual>
-  </link>
+  </link> -->
   <!-- <link name="youbot__caster_link_bl">
     <inertial>
       <mass value="0.100000"/>
@@ -494,8 +497,31 @@
       </geometry>
     </visual>
   </link>
+<link name="kinect__link">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="kinect__collision">
+      <origin rpy="0  0  0" xyz="0       0       0.03599"/>
+      <geometry>
+        <box size="0.073000 0.276000 0.072000"/>
+      </geometry>
+    </collision>
+    <visual name="kinect__visual">
+      <origin rpy="0  0  0" xyz="0       0       0.03599"/>
+      <geometry>
+        <mesh filename="package://wro_gazebo/models/kinect/meshes/kinect.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+</link>
 
 <!-- ------------------------------arm transmissions------------------------------ -->
+<!-- The transmission elements are required to use ros_control.
+     These specify the relationship between a revolute joint and an actuator that will
+     be used by ros control (different controller types) to move the joint as desired  -->
+
 <transmission name="tran0">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="youbot__arm_joint_0">
@@ -559,7 +585,7 @@
 
 <!-- ----------------------------Control Plugins------------------------------ -->
 <gazebo>
-  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so"> <!-- Control of quadrature base using Twist Msg -->
     <updateRate>100.0</updateRate>
     <robotNamespace>/youbot</robotNamespace>
     <leftFrontJoint>youbot__wheel_joint_fl</leftFrontJoint>
@@ -576,10 +602,50 @@
 </gazebo>
 
 <gazebo>
-  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">   <!-- Plugin to enable ros_control (this allows for interfacing Gazebo and ROS by setting up simulated controllers which can accessed using ROS) -->
     <robotNamespace>/youbot</robotNamespace>
     <legacyModeNS>true</legacyModeNS>
   </plugin>
 </gazebo>
 
+<gazebo reference="kinect__link">
+  <sensor name="camera" type="depth">
+    <update_rate>20</update_rate>
+    <camera>
+      <horizontal_fov>1.047198</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>3</far>
+      </clip>
+    </camera>
+<plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so"> <!-- This is a sensor plugin and not a model plugin.-->
+          <baseline>0.2</baseline>                                          <!--  Note how the plugin in included inside the sensor tags -->
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>camera_ir</cameraName>
+          <imageTopicName>/camera/depth/image_raw</imageTopicName>
+          <cameraInfoTopicName>/camera/depth/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+          <depthImageInfoTopicName>/camera/depth/camera_info</depthImageInfoTopicName>
+          <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+          <frameName>camera_depth_optical_frame</frameName>
+          <pointCloudCutoff>0.05</pointCloudCutoff>
+          <distortionK1>0</distortionK1>
+          <distortionK2>0</distortionK2>
+          <distortionK3>0</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>0</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor>
+</gazebo>
 </robot>
