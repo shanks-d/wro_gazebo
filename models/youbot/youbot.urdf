@@ -1,9 +1,9 @@
+<?xml version="1.0" ?>
 <!-- Notes -->
 <!-- This is a modification of the actual 'KUKA YOUBOT' and does not simulate mechanum wheels -->
 <!-- The robot URDF is modified by eliminating links and joints used to simulate mechanum wheels -->
 <!-- The Hokuyo laserscanner mounted on the robot is replaced by a Kinect Camera -->
 <!-- The robot manipulator is controlled using effort_controllers/JointPositionController -->
-<?xml version="1.0" ?>
 <robot name="youbot">
   <joint name="youbot__base_footprint_joint" type="revolute">
     <parent link="youbot__base_footprint"/>
