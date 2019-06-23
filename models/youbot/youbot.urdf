@@ -517,7 +517,7 @@
     </visual>
 </link>
 
-<!-- ------------------------------arm transmissions------------------------------ -->
+<!-- arm transmissions -->
 <!-- The transmission elements are required to use ros_control.
      These specify the relationship between a revolute joint and an actuator that will
      be used by ros control (different controller types) to move the joint as desired  -->
@@ -583,7 +583,7 @@
     </actuator>
 </transmission>
 
-<!-- ----------------------------Control Plugins------------------------------ -->
+<!-- Control Plugins -->
 <gazebo>
   <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so"> <!-- Control of quadrature base using Twist Msg -->
     <updateRate>100.0</updateRate>
