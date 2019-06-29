@@ -630,8 +630,8 @@
           <cameraName>camera_ir</cameraName>
           <imageTopicName>/camera/depth/image_raw</imageTopicName>
           <cameraInfoTopicName>/camera/depth/camera_info</cameraInfoTopicName>
-          <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
-          <depthImageInfoTopicName>/camera/depth/camera_info</depthImageInfoTopicName>
+<!--          <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+          <depthImageInfoTopicName>/camera/depth/camera_info</depthImageInfoTopicName> -->
           <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
           <frameName>camera_depth_optical_frame</frameName>
           <pointCloudCutoff>0.05</pointCloudCutoff>
