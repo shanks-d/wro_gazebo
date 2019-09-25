@@ -52,8 +52,7 @@
   </group>
 
   <param name="robot_description" textfile="$(find wro_gazebo)/models/youbot/youbot.urdf"/>
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model youbot -param robot_description -x $(arg x) -y $(arg y) -z $(arg z)
-                -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model youbot"/>
 
   <include file="$(find wro_control)/launch/youbot_control.launch" />
 </launch>
